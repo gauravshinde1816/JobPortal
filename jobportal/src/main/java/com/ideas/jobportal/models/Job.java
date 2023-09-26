@@ -14,11 +14,14 @@ public class Job {
   private String job_category;
   private String company_details;
   @ManyToOne
-  @JoinTable(name = "hiring_manager")
+  @JoinColumn(name = "hiring_manager")
   private User hiring_manager;
 
-  public Job(Long job_id, String job_title, String job_description, String job_category, String company_details, User hiring_manager) {
-    this.job_id = job_id;
+  public Job() {
+  }
+
+  public Job(String job_title, String job_description, String job_category, String company_details, User hiring_manager) {
+
     this.job_title = job_title;
     this.job_description = job_description;
     this.job_category = job_category;

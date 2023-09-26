@@ -35,6 +35,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
+            else {
+                throw  new Exception("Auth Header is empty");
+            }
+
         }catch (Exception e){
             logger.error("Cannot set user authentication: {}", e);
         }
