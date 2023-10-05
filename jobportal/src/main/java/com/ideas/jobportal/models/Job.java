@@ -1,7 +1,6 @@
 package com.ideas.jobportal.models;
-
-
 import jakarta.persistence.*;
+import java.util.Objects;
 
 
 @Entity
@@ -76,5 +75,30 @@ public class Job {
 
   public void setHiring_manager(User hiring_manager) {
     this.hiring_manager = hiring_manager;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Job job = (Job) o;
+    return Objects.equals(getJob_id(), job.getJob_id()) && Objects.equals(getJob_title(), job.getJob_title()) && Objects.equals(getJob_description(), job.getJob_description()) && Objects.equals(getJob_category(), job.getJob_category()) && Objects.equals(getCompany_details(), job.getCompany_details()) && Objects.equals(getHiring_manager(), job.getHiring_manager());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getJob_id(), getJob_title(), getJob_description(), getJob_category(), getCompany_details(), getHiring_manager());
+  }
+
+  @Override
+  public String toString() {
+    return "Job{" +
+      "job_id=" + job_id +
+      ", job_title='" + job_title + '\'' +
+      ", job_description='" + job_description + '\'' +
+      ", job_category='" + job_category + '\'' +
+      ", company_details='" + company_details + '\'' +
+      ", hiring_manager=" + hiring_manager +
+      '}';
   }
 }

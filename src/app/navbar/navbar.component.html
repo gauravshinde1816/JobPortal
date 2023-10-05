@@ -1,0 +1,17 @@
+<mat-toolbar  *ngIf="role !== ''" color="primary">
+    <mat-toolbar-row>
+      <span>Job Portal</span>
+      <mat-nav-list *ngIf="role === 'HM'; else elseBlock" class="navLinks">
+        <mat-list-item routerLink="/create-new-job">Create new job</mat-list-item>
+        <mat-list-item (click)="LogoutFunction()">Logout</mat-list-item>
+      </mat-nav-list>
+    </mat-toolbar-row>
+
+    <ng-template  #elseBlock>
+        <mat-nav-list class="navLinks">
+            <mat-list-item routerLink="/create-new-job-alert">Create new job Alert</mat-list-item>
+            <mat-list-item (click)="LogoutFunction()">Logout</mat-list-item>
+          </mat-nav-list>
+    </ng-template>
+</mat-toolbar>
+  

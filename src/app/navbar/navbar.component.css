@@ -1,0 +1,19 @@
+.mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  .mat-tab-link {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  
+
+  .navLinks{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }

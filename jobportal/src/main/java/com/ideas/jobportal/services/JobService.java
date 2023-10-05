@@ -34,6 +34,7 @@ public class JobService {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     User hiring_manager = userRepository.findByUsername(authentication.getName()).get();
 
+
     Job new_job = new Job(
       job_request.getJob_title(),
       job_request.getJob_description(),
@@ -41,7 +42,7 @@ public class JobService {
       job_request.getCompany_details(),
       hiring_manager
     );
-    return jobRepository.save(new_job);
+    return  jobRepository.save(new_job);
 
   }
 
@@ -54,10 +55,11 @@ public class JobService {
   }
 
 
-  public ResponseEntity<?> updateJob(Long job_id , Job updatedJob){
+  public Job updateJob(Long job_id , Job updatedJob){
     Optional<Job> job = jobRepository.findById(job_id);
     if (job.isPresent()) {
       Job existingJob = job.get();
+
       existingJob.setJob_category(updatedJob.getJob_category());
       existingJob.setJob_description(updatedJob.getJob_description());
       existingJob.setCompany_details(updatedJob.getCompany_details());
@@ -65,9 +67,9 @@ public class JobService {
 
       jobRepository.save(existingJob);
 
-      return ResponseEntity.ok(existingJob);
+      return existingJob;
     }
-    return ResponseEntity.notFound().build();
+    return null;
   }
 
 
@@ -79,7 +81,7 @@ public class JobService {
       String msg = "Job " + existingJob.getJob_id() + " is deleted successfully";
       return ResponseEntity.ok(msg);
     }
-    return ResponseEntity.notFound().build();
+    return new ResponseEntity<>( "Job not found",  HttpStatus.BAD_REQUEST );
   }
 
 

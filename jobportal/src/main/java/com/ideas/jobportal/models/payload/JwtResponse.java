@@ -1,28 +1,30 @@
 package com.ideas.jobportal.models.payload;
 
+import com.ideas.jobportal.models.User;
+
 public class JwtResponse {
 
 
-    private  String username;
+    private User user;
 
     private  String jwtToken;
 
 
-    public JwtResponse(String username, String jwtToken) {
-        this.username = username;
+    public JwtResponse(User user, String jwtToken) {
+        this.user = user;
         this.jwtToken = jwtToken;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
     public String getJwtToken() {
         return jwtToken;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(User user) {
+        this.user = user;
     }
 
     public void setJwtToken(String jwtToken) {

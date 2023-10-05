@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
-import { UserDetails } from './Types';
-import { CentralDataServiceService } from './central-data-service.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from  "@angular/router"
+import { CentralDataServiceService } from '../central-data-service.service';
+import { UserDetails } from '../Types';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent {
+
+
+
+
+export class DashboardComponent {
+   
+
   userDetails : UserDetails = {jwtToken  : '' , user : {password : '' , username : "" , role : ""}}
   role : string = ''
-  isLoggedIn : boolean = false
   
 
   constructor(private centralDataService : CentralDataServiceService, private route : Router){
@@ -19,13 +24,12 @@ export class AppComponent {
 
   ngOnInit(){
     this.userDetails =  this.centralDataService.getUserDetails()
-    this.isLoggedIn = this.centralDataService.isLoggedIn
   }
 
   Logout(){
     this.centralDataService.clear()
-    this.isLoggedIn = false
     localStorage.removeItem("authToken")
     this.route.navigate([""])
   }
+
 }

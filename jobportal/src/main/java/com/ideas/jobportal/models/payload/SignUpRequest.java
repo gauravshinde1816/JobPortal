@@ -12,6 +12,32 @@ public class SignUpRequest {
 
     private String password;
 
+  private  String bio;
+
+
+  private  String current_company;
+
+
+  public String getCurrent_company() {
+    return current_company;
+  }
+
+  public void setCurrent_company(String current_company) {
+    this.current_company = current_company;
+  }
+
+
+
+  public String getBio() {
+    return bio;
+  }
+
+  public void setBio(String bio) {
+    this.bio = bio;
+  }
+
+
+
     public String getUsername() {
         return username;
     }

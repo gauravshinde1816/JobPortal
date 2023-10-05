@@ -12,7 +12,7 @@ export class HomeComponent {
   constructor(private router :Router) {}
   
   navigateToCorrectLogin( role : string) {
-    this.router.navigate(['login'] ,  {queryParams : {role : role}})
+    this.router.navigate(['signup'] ,  {queryParams : {role : role}})
   }
 
 }

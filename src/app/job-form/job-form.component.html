@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card class="job-form">
+    <form>
+      <mat-form-field class="job-form-full-width">
+        <input matInput placeholder="Job Title" [(ngModel)]="job_title" name="job_title">
+      </mat-form-field>
+  
+      <mat-form-field class="job-form-full-width">
+        <textarea matInput placeholder="Job Description" [(ngModel)]="job_description" name="job_description"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field class="job-form-full-width">
+        <input matInput placeholder="Job Category" [(ngModel)]="job_category" name="job_category">
+      </mat-form-field>
+  
+      <mat-form-field class="job-form-full-width">
+        <textarea matInput placeholder="Company Details" [(ngModel)]="company_details" name="company_details"></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card>
+</div>
+
+  
