@@ -1,0 +1,18 @@
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Education
+          <button *ngIf="this.userDetails.user.username === educationList[0].user.username" routerLink="/add-education" class="add_edu" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-panel-title>
+        
+      </mat-expansion-panel-header>
+      <div *ngFor="let education of educationList">
+        <app-education-card [education]="education"></app-education-card>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

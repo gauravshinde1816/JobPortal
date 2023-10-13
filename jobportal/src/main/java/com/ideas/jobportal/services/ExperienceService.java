@@ -55,6 +55,12 @@ public class ExperienceService {
     return experienceRepository.findByUser(user);
   }
 
+  public List<Experience> getExperienceByUser(User user){
+    return experienceRepository.findByUser(user);
+  }
+
+
+
   public Experience updateExperience(Long experience_id ,  Experience experienceRequest){
     Optional<Experience> existingExperience = experienceRepository.findById(experience_id);
 

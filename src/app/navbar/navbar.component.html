@@ -1,17 +1,47 @@
-<mat-toolbar  *ngIf="role !== ''" color="primary">
-    <mat-toolbar-row>
-      <span>Job Portal</span>
-      <mat-nav-list *ngIf="role === 'HM'; else elseBlock" class="navLinks">
-        <mat-list-item routerLink="/create-new-job">Create new job</mat-list-item>
-        <mat-list-item (click)="LogoutFunction()">Logout</mat-list-item>
-      </mat-nav-list>
-    </mat-toolbar-row>
+<mat-toolbar *ngIf="isLoggedIn" color="primary">
+  <mat-toolbar-row>
+    <button mat-button color="warn" (click)="navigateToHome()">
+      <img class="logo_image" width="60" height="60" src="https://img.icons8.com/office/80/find-matching-job.png" alt="find-matching-job"/>
+    </button>
+    <mat-nav-list *ngIf="role === 'HM'; else elseBlock" class="navLinks">
+      <mat-list-item routerLink="/create-new-job">
+        <button mat-fab extended color="accent">
+          <mat-icon>work</mat-icon>
+          Create New Job
+        </button>
+      </mat-list-item>
+      <div class="right_button_panel">
+        <mat-list-item (click)="LogoutFunction()"> <button mat-icon-button color="warn"
+            aria-label="Example icon button with a heart icon">
+            <mat-icon>exit_to_app</mat-icon>
+          </button></mat-list-item>
+      </div>
 
-    <ng-template  #elseBlock>
-        <mat-nav-list class="navLinks">
-            <mat-list-item routerLink="/create-new-job-alert">Create new job Alert</mat-list-item>
-            <mat-list-item (click)="LogoutFunction()">Logout</mat-list-item>
-          </mat-nav-list>
-    </ng-template>
+    </mat-nav-list>
+  </mat-toolbar-row>
+
+  <ng-template #elseBlock>
+    <mat-nav-list class="navLinks">
+      <mat-list-item>
+
+        <button mat-fab extended color="accent">
+          <mat-icon>notifications</mat-icon>
+          Create Job Alert
+        </button>
+
+
+      </mat-list-item>
+      <div class="right_button_panel">
+        <mat-list-item>
+          <button routerLink="/profile" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon>account_circle</mat-icon>
+          </button></mat-list-item>
+        <mat-list-item (click)="LogoutFunction()"> <button mat-icon-button color="warn"
+            aria-label="Example icon button with a heart icon">
+            <mat-icon>exit_to_app</mat-icon>
+          </button></mat-list-item>
+      </div>
+
+    </mat-nav-list>
+  </ng-template>
 </mat-toolbar>
-  

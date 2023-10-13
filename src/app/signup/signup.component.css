@@ -1,5 +1,4 @@
-/* login.component.css */
-
+/* 
 :host {
     display: flex;
     justify-content: center;
@@ -8,18 +7,42 @@
   }
   
   mat-card {
-    width: 300px; 
+    width: 500px; 
     padding: 20px;
     text-align: center;
   }
   
-  mat-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ 
   
   button {
     margin-top: 20px;
   }
+   */
+
+   .signup-container{
+    margin: 5rem;
+   }
+
+   .form_title{
+    text-align: center;
+   }
+
+   .signup_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .full-width{
+    width: 60%;
+  }
+
   
+  .signup_header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   }
+   

@@ -1,0 +1,6 @@
+<div *ngIf="JobList.length === 0">
+    <h2>No Job Posted Yet</h2>
+</div>
+<div *ngFor="let job of JobList">
+    <app-job-item [job]="job" [role]="loginState.role"></app-job-item>
+</div>

@@ -1,30 +1,68 @@
 import { Injectable } from '@angular/core';
-import { UserDetails } from './Types';
+import { User, UserDetails, loginEvent } from './Types';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { loginResponse } from './login/loginTypes';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CentralDataServiceService {
 
-  private userDetails : UserDetails = {jwtToken  : '' , user : {password : '' , username : "" , role : ""}}
- isLoggedIn : boolean = false
-  constructor() { }
+  userDetails: UserDetails = { jwtToken: '', user: { password: '', username: "", role: "" , bio : "" ,  current_company : "" } }
+  public userDetailsStateSubject = new BehaviorSubject<UserDetails>({ jwtToken: '', user: { password: '', username: "", role: "" , bio : "" , current_company : "" } })
+  isLoggedIn: boolean = false
+  public loginStateSubject = new BehaviorSubject<loginEvent>({role : ' ' , isLoggedIn : false});
+  public loginStateSubscriber = this.loginStateSubject.asObservable();
+  isLoading: boolean = true
+  public loadingStateSubject = new BehaviorSubject<boolean>(true);
+  public loadingStateSubscriber = this.loadingStateSubject.asObservable();
+  jobListCountForHiringManagerSubject = new BehaviorSubject<number>(0);
+
+  constructor(private http: HttpClient) { }
+
+  private baseUrl = 'http://localhost:8080';
 
 
-  setUserDetails(userDetails : UserDetails , isLoggedIn : boolean){
-    this.userDetails = userDetails
-    this.isLoggedIn = isLoggedIn
+  setUserDetails(userDetails: UserDetails) {
+    this.userDetails = userDetails;
   }
 
-
-  getUserDetails(){
+  getUserDetails() {
     return this.userDetails;
   }
 
+  clear() {
+    this.userDetails = { jwtToken: "", user: { password: "", role: "", username: '' , bio : "" , current_company : "" } }
+  }
 
 
-  clear(){
-    this.userDetails = {jwtToken : "" , user : {password : "" , role : "" ,username : '' }}
+  getLoggedInUserDetails(token: string): Observable<any> {
+
+    const headers = new HttpHeaders()
+      .set('Authorization', token)
+    return this.http.get(`${this.baseUrl}/api/auth/me`, { headers })
+  }
+
+
+  getTokenFromLocalStorage() {
+    return localStorage.getItem("authToken")
+  }
+
+
+  displayState() {
+    console.log("UserDetails ", this.userDetails, "isLoading ", this.isLoading, "isLoggedIn ", this.isLoggedIn)
+  }
+
+
+  // notification service
+  private apiUrl = '/api/notifications';
+
+
+  sendJobNotification(message: string , token: string) {
+    const headers = new HttpHeaders()
+    .set('Authorization', token)
+    return this.http.post(`${this.apiUrl}/send`, { message } ,  {headers});
   }
 
 

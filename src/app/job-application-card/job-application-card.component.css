@@ -1,0 +1,30 @@
+.job_application_details_container{
+    margin: 5rem;
+    padding: 10px;
+    border: 2px solid black;
+    box-shadow: 1px 1px 2px;
+}
+
+.personal_details{
+    display: flex;
+    align-items: center;
+
+}
+.email_icons{
+    font-size: medium
+}
+
+.job_actions{
+    display: flex;
+    justify-content: center;
+}
+.reject_btn{
+    width: 50%;
+    background-color: brown;
+    margin: 5px;
+}
+.rejected_btn{
+    width: 50%;
+    background-color: grey;
+    margin: 5px;
+}

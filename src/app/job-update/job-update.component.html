@@ -1,0 +1,33 @@
+<div class="container">
+    <mat-card class="job-form">
+      <form (ngSubmit)="updateJob()">
+        <h2>Update Job</h2>
+        <mat-form-field class="job-form-full-width">
+          <input matInput placeholder="Job Title" [(ngModel)]="jobTitle" name="job_title">
+        </mat-form-field>
+    
+        <mat-form-field class="job-form-full-width">
+          <textarea matInput placeholder="Job Description" [(ngModel)]="jobDescription" name="job_description"></textarea>
+        </mat-form-field>
+    
+        <mat-form-field class="job-form-full-width">
+          <mat-label>Select Category</mat-label>
+          <mat-select [(value)]="jobCategory">
+            <mat-option value="SOFTWARE">SOFTWARE</mat-option>
+            <mat-option value="QA">QA</mat-option>
+            <mat-option value="MARKETING">MARKETING</mat-option>
+            <mat-option value="HR">HR</mat-option>
+            <mat-option value="SALES">SALES</mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field class="job-form-full-width">
+          <textarea matInput placeholder="Company Details" [(ngModel)]="companyDetails" name="company_details"></textarea>
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" type="submit">Update</button>
+      </form>
+    </mat-card>
+  </div>
+  
+    

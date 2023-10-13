@@ -19,17 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 
-@CrossOrigin(
-  origins = {
-    "http://localhost:4200",
-  },
-  methods = {
-    RequestMethod.OPTIONS,
-    RequestMethod.GET,
-    RequestMethod.PUT,
-    RequestMethod.DELETE,
-    RequestMethod.POST
-  })
+
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,7 +41,7 @@ public class AuthController {
   public ResponseEntity<?> signup(@RequestBody SignUpRequest signupRequest) {
 
     //  checks to be added
-    User user = new User(signupRequest.getUsername(), signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()), signupRequest.getRole());
+    User user = new User(signupRequest.getUsername(), signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()), signupRequest.getRole() , signupRequest.getBio() , signupRequest.getCurrent_company());
 
     userRepository.save(user);
     String jwt = Jwts.builder().setSubject(signupRequest.getUsername()).setIssuedAt(new Date())
@@ -87,7 +77,7 @@ public class AuthController {
   }
 
   @GetMapping("/me")
-  public User getLoggedInUser() {
+  public User getLoggedInUser() throws InterruptedException {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     User user = userRepository.findByUsername(authentication.getName()).get();
     return user;

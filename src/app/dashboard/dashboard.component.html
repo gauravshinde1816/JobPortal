@@ -1,1 +1,16 @@
-<app-navbar [role]="userDetails.user.role"  [LogoutFunction]="Logout"></app-navbar>
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div *ngIf="!isLoading && this.userDetails.user.role === 'HM'" class="container">
+    <div class="column1">
+        <app-profile [userName]="this.userDetails.user.username"  [role]="this.userDetails.user.role" (stopScroll)="stopParentScroll()"></app-profile>
+    </div>
+    <div class="column2">
+        <app-job-list></app-job-list>
+    </div>
+</div>
+
+<div *ngIf="!isLoading && this.userDetails.user.role === 'JS'" class="job_list_container">
+    <div class="">
+        <app-job-list></app-job-list>
+    </div>
+</div>

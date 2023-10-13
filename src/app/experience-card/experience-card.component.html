@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header class="exp_header">
+    <mat-card-title>{{ experience.companyName }}</mat-card-title>
+
+    <button *ngIf="this.userDetails.user.username === experience.user.username" (click)="onDeleteExp(experience.id)" mat-mini-fab color="accent"
+      aria-label="Example icon button with a delete icon">
+      <mat-icon>delete</mat-icon>
+      <!-- <p class="text_color">{{this.userDetails.user.username}}</p>
+      <p class="text_color">{{experience.user.username}}</p> -->
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ experience.description }}</p>
+    <p>
+      <strong>Start Date:</strong> {{ experience.startDate | date }}
+    </p>
+    <p>
+      <strong>End Date:</strong> {{ experience.endDate | date }}
+    </p>
+  </mat-card-content>
+</mat-card>

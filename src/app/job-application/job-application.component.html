@@ -1,0 +1,13 @@
+<div class="job_application">
+       <!-- job details -->
+       <app-job-item [job]="job"  [role]="'JS'"  [jobDetails]="true" [jobStatus]="true"></app-job-item>
+       <app-education-list></app-education-list>
+       <app-experience-list></app-experience-list>
+
+       <a mat-fab extended (click)="onApplyJob()" class="apply_button" color="primary">
+        <mat-icon>work</mat-icon>
+        Apply
+    </a>
+
+</div>
+

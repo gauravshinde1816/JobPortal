@@ -15,5 +15,16 @@
   .navLinks{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+  }
+
+  .right_button_panel{
+    display: flex;
+    
+  }
+
+  .logo_image{
+    margin-top: 0.8rem;
   }

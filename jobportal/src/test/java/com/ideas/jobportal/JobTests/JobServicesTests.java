@@ -116,7 +116,7 @@ public class JobServicesTests {
   }
 
   @Test
-  void givenJobID_whenDeleteJob_thenReturnSuccessString(){
+  void givenJobID_whenDeleteJob_thenReturnSuccessString() throws Exception {
       User user = new User();
       user.setUsername("TestUser");
 

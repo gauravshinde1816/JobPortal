@@ -3,22 +3,12 @@ import com.ideas.jobportal.models.Job;
 import com.ideas.jobportal.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin(
-  origins = {
-    "http://localhost:4200",
-  },
-  methods = {
-    RequestMethod.OPTIONS,
-    RequestMethod.GET,
-    RequestMethod.PUT,
-    RequestMethod.DELETE,
-    RequestMethod.POST
-  })
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/jobs")
 public class JobController {
@@ -29,6 +19,12 @@ public class JobController {
   @GetMapping("")
   public List<Job> getJobs() {
     return jobService.getAllJobs();
+  }
+
+
+  @GetMapping("/hiring/me")
+  public List<Job> getJobsPostedByHiringManager() {
+    return jobService.getAllJobsByHiringManager();
   }
 
   @GetMapping("/{job_id}")
@@ -48,8 +44,8 @@ public class JobController {
   }
 
   @DeleteMapping("/{job_id}")
-  public ResponseEntity<?> deleteJob(@PathVariable Long job_id) {
-    return jobService.deleteJob(job_id);
+  public void deleteJob(@PathVariable Long job_id) throws Exception {
+     jobService.deleteJob(job_id);
   }
 
 }

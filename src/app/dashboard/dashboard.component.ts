@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {ActivatedRoute, Router} from  "@angular/router"
 import { CentralDataServiceService } from '../central-data-service.service';
 import { UserDetails } from '../Types';
@@ -15,15 +15,22 @@ import { UserDetails } from '../Types';
 export class DashboardComponent {
    
 
-  userDetails : UserDetails = {jwtToken  : '' , user : {password : '' , username : "" , role : ""}}
+  userDetails : UserDetails = {jwtToken  : '' , user : {password : '' , username : "" , role : "" , bio : "" , current_company : ""}}
   role : string = ''
+  isLoading  : boolean = true
   
 
   constructor(private centralDataService : CentralDataServiceService, private route : Router){
   }
 
   ngOnInit(){
-    this.userDetails =  this.centralDataService.getUserDetails()
+    this.centralDataService.loadingStateSubscriber.subscribe((val: boolean) => {
+      this.isLoading = val;
+    })
+    
+    this.centralDataService.userDetailsStateSubject.subscribe((val : UserDetails) =>{
+      this.userDetails = val
+    })
   }
 
   Logout(){
@@ -32,4 +39,15 @@ export class DashboardComponent {
     this.route.navigate([""])
   }
 
+
+  stopParentScroll() {
+    // Disable scrolling
+    document.body.style.overflow = 'hidden';
+  }
+  
+  allowParentScroll() {
+    // Allow scrolling
+    document.body.style.overflow = 'auto';
+  }
+  
 }

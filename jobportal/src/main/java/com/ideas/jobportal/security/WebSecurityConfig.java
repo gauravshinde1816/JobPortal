@@ -3,8 +3,10 @@ package com.ideas.jobportal.security;
 import com.ideas.jobportal.jwt.AuthTokenFilter;
 import com.ideas.jobportal.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -16,13 +18,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+import java.util.Arrays;
+
 @Configuration
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
   @Autowired
   UserService userService;
-
 
   @Bean
   public AuthTokenFilter authJwtTokenFilter() {
@@ -56,12 +60,13 @@ public class WebSecurityConfig {
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(auth ->
         auth.requestMatchers("/api/auth/**").permitAll()
-          .requestMatchers("/api/test/**").authenticated()
-          .requestMatchers("/api/jobs/**").authenticated()
+          .requestMatchers("/api/educations/**").permitAll()
+          .requestMatchers("/api/experiences/**").permitAll()
+          .requestMatchers("/api/applications/**").permitAll()
+          .requestMatchers("/api/notifications").permitAll()
+          .requestMatchers("/api/jobs/**").permitAll()
           .anyRequest().authenticated()
-
       );
-
     http.authenticationProvider(authenticationProvider());
     http.addFilterBefore(authJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     return http.build();

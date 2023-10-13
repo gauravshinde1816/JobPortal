@@ -1,11 +1,12 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
     <mat-card class="signup-container">
-      <mat-card-header>
-        <mat-card-title>Sign Up</mat-card-title>
-      </mat-card-header>
   
       <mat-card-content>
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" class="signup_form">
+          <div class="login_header">
+            <img width="100" height="100" src="https://img.icons8.com/bubbles/100/find-user-male.png" alt="find-user-male"/>
+            <mat-card-title>Sign Up</mat-card-title>
+          </div>
           <mat-form-field class="full-width">
             <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
           </mat-form-field>
@@ -17,6 +18,14 @@
 
           <mat-form-field class="full-width">
             <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Aspiring  Software Engineer..." [(ngModel)]="bio" name="bio" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="IDeaS ..." [(ngModel)]="current_company" name="current_company" required>
           </mat-form-field>
   
           <button mat-raised-button color="primary" type="submit">Sign Up</button>

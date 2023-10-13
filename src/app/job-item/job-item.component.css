@@ -1,0 +1,41 @@
+.job-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .job_item_header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .job_status_expired{
+    background-color: #ccc;
+  }
+
+  .job_status_active{
+    color: green;
+  }
+
+  .job_actions_container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .view_job_applications{
+    width: 80%;
+    margin: 15px;
+  }
+
+  .reject_btn{
+    margin-left: 5px;
+  }

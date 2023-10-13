@@ -1,0 +1,59 @@
+<div class="job-item">
+    <div class="job_item_header">
+        <h2>{{ job.job_title }}</h2>
+        <span *ngIf="role === 'HM'" class="job_actions">
+            <button [routerLink]="['/update-job', job.job_id]" mat-icon-button color="primary"
+                aria-label="Example icon button with a home icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="onDeleteJob(job.job_id)" mat-fab color="accent"
+                aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+         
+
+
+        </span>
+
+        <span *ngIf="role === 'JS'" class="job_actions">
+            <a *ngIf="!applied && !jobDetails; else elseBlock" mat-fab extended
+                [routerLink]="['/apply-job', job.job_id]" color="primary">
+                <mat-icon>work</mat-icon>
+                Apply
+            </a>
+
+            <ng-template #elseBlock>
+                <mat-chip *ngIf="jobStatus && applied" class="job_status_active">
+                    Under Consideration
+                </mat-chip>
+                <mat-chip *ngIf="!jobStatus && applied" class="job_status_expired">
+                    Rejected
+                </mat-chip>
+
+                <button *ngIf="jobDetails && applied && jobStatus" (click)="withDrawJobApplication()" mat-fab extended color="accent"
+                    aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                    Withdraw
+                </button>
+
+            </ng-template>
+
+        </span>
+    </div>
+
+    <p><strong>Category:</strong> {{ job.job_category }}</p>
+    <p><strong>Company:</strong> {{ job.company_details }}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{ job.job_description }}</p>
+
+    <div class="job_actions_container">
+        <button *ngIf="role === 'HM' && !jobApprovalPage" [routerLink]="['/job-applications' , job.job_id]" class="view_job_applications" mat-fab color="accent" extended
+        aria-label="Example icon button with a delete icon">
+        <mat-icon>work</mat-icon>
+        View Job Applications
+    </button>
+    </div>
+    
+
+</div>

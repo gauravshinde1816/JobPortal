@@ -12,4 +12,9 @@
   
   .account-link {
     margin-top: 20px;
+    color: black;
+    border: 1px solid black;
+    padding: auto;
+    font-weight: 900;
+    text-decoration: solid;
   }

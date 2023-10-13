@@ -14,7 +14,7 @@ public class Job {
   private String company_details;
   @ManyToOne
   @JoinColumn(name = "hiring_manager")
-  private User hiring_manager;
+  private User hiringManager;
 
   public Job() {
   }
@@ -25,7 +25,7 @@ public class Job {
     this.job_description = job_description;
     this.job_category = job_category;
     this.company_details = company_details;
-    this.hiring_manager = hiring_manager;
+    this.hiringManager = hiring_manager;
   }
 
   public Long getJob_id() {
@@ -49,7 +49,7 @@ public class Job {
   }
 
   public User getHiring_manager() {
-    return hiring_manager;
+    return hiringManager;
   }
 
 
@@ -74,7 +74,7 @@ public class Job {
   }
 
   public void setHiring_manager(User hiring_manager) {
-    this.hiring_manager = hiring_manager;
+    this.hiringManager = hiring_manager;
   }
 
   @Override
@@ -98,7 +98,7 @@ public class Job {
       ", job_description='" + job_description + '\'' +
       ", job_category='" + job_category + '\'' +
       ", company_details='" + company_details + '\'' +
-      ", hiring_manager=" + hiring_manager +
+      ", hiring_manager=" + hiringManager +
       '}';
   }
 }

@@ -29,6 +29,16 @@ public class JobService {
     return  jobRepository.findAll();
   }
 
+
+  public  List<Job> getAllJobsByHiringManager(){
+
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    User user = userRepository.findByUsername(authentication.getName()).get();
+    return jobRepository.findByHiringManager(user);
+  }
+
+
+
   public Job createJob(Job job_request) {
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -73,16 +83,13 @@ public class JobService {
   }
 
 
-  public ResponseEntity<?> deleteJob(Long job_id){
+  public void deleteJob(Long job_id) throws Exception {
     Optional<Job> job = jobRepository.findById(job_id);
     if (job.isPresent()) {
       Job existingJob = job.get();
-      jobRepository.deleteById(job_id);
-      String msg = "Job " + existingJob.getJob_id() + " is deleted successfully";
-      return ResponseEntity.ok(msg);
+      jobRepository.deleteById(job_id);}
+    else{
+      throw new Exception("Job not found");
     }
-    return new ResponseEntity<>( "Job not found",  HttpStatus.BAD_REQUEST );
   }
-
-
 }

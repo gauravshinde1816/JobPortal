@@ -18,14 +18,36 @@ public class User {
 
     private  String role;
 
+    private  String bio;
+
+  public String getBio() {
+    return bio;
+  }
+
+  public void setBio(String bio) {
+    this.bio = bio;
+  }
+
+  public String getCurrent_company() {
+    return current_company;
+  }
+
+  public void setCurrent_company(String current_company) {
+    this.current_company = current_company;
+  }
+
+  private  String current_company;
+
     public User() {
     }
 
-    public User(String username, String email, String password, String role) {
+    public User(String username, String email, String password, String role , String bio ,String current_company) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.bio = bio;
+        this.current_company = current_company;
     }
 
     public Long getId() {

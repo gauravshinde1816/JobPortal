@@ -1,0 +1,11 @@
+
+
+<div class="job_application_details_container">
+    <div *ngIf="this.jobApplicationList.length === 0">
+        <h2>No Job Applications As of Now...</h2>
+    </div>
+    
+    <div *ngFor="let jobApplication of jobApplicationList">
+        <app-job-application-card [jobApplication]="jobApplication"></app-job-application-card>
+    </div> 
+</div>

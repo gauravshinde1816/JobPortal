@@ -1,0 +1,42 @@
+<div class="job_application_details_container">
+    <div class="job_application_details_card">
+        <app-job-item [job]="jobApplication.job" [role]="'HM'" [jobApprovalPage]="true" [jobDetails]="false"
+            [jobStatus]="jobApplication.status"></app-job-item>
+        <div class="profile-details">
+            <div class="personal_details">
+                <mat-chip>
+                    <img matChipAvatar
+                        src="https://icons.iconarchive.com/icons/marcus-roberto/google-play/512/Gmail-icon.png"
+                        alt="Photo of a Shiba Inu" />
+                    <a href="mailto:{{jobApplication.applicant.email}}">{{jobApplication.applicant.email}}</a>
+                </mat-chip>
+                <mat-chip routerLink="/profile">
+                    <img matChipAvatar
+                        src="https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg"
+                        alt="profile" />
+                    {{jobApplication.applicant.username}}
+                </mat-chip>
+            </div>
+            <div class="education_list">
+                <app-education-list [applicantID]="jobApplication.applicant.id"></app-education-list>
+            </div>
+            <div class="experience_list">
+                <app-experience-list [applicantID]="jobApplication.applicant.id"></app-experience-list>
+            </div>
+            <div *ngIf="jobApplication.status" class="job_actions">
+                <button (click)="onRejectApplication()" class="reject_btn" mat-fab extended color="primary"
+                    aria-label="Example icon button with a delete icon">
+                    <span>X</span>
+                    Reject
+                </button>
+            </div>
+            <div *ngIf="!jobApplication.status" class="job_actions">
+                <button class="rejected_btn" mat-fab extended color="primary"
+                    aria-label="Example icon button with a delete icon">
+                    <span>😔</span>
+                    Rejected
+                </button>
+            </div>
+
+        </div>
+    </div>

@@ -1,25 +1,33 @@
 <div class="container">
   <mat-card class="job-form">
     <form>
+      <h2>Create New Job</h2>
       <mat-form-field class="job-form-full-width">
         <input matInput placeholder="Job Title" [(ngModel)]="job_title" name="job_title">
       </mat-form-field>
-  
+
       <mat-form-field class="job-form-full-width">
-        <textarea matInput placeholder="Job Description" [(ngModel)]="job_description" name="job_description"></textarea>
+        <textarea matInput placeholder="Job Description" [(ngModel)]="job_description"
+          name="job_description"></textarea>
       </mat-form-field>
-  
+
       <mat-form-field class="job-form-full-width">
-        <input matInput placeholder="Job Category" [(ngModel)]="job_category" name="job_category">
+        <mat-label>Select Category</mat-label>
+        <mat-select [(value)]="job_category">
+          <mat-option value="SOFTWARE">SOFTWARE</mat-option>
+          <mat-option value="QA">QA</mat-option>
+          <mat-option value="MARKETING">MARKETING</mat-option>
+          <mat-option value="HR">HR</mat-option>
+          <mat-option value="SALES">SALES</mat-option>
+        </mat-select>
       </mat-form-field>
-  
+
       <mat-form-field class="job-form-full-width">
-        <textarea matInput placeholder="Company Details" [(ngModel)]="company_details" name="company_details"></textarea>
+        <textarea matInput placeholder="Company Details" [(ngModel)]="company_details"
+          name="company_details"></textarea>
       </mat-form-field>
-  
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+
+      <button (click)="onSubmit()" mat-raised-button color="primary" type="submit">Submit</button>
     </form>
   </mat-card>
 </div>
-
-  

@@ -33,6 +33,11 @@ public class EducationService {
   }
 
 
+  public List<Education> getEducationByUser(User user){
+    return educationRepository.findByUser(user);
+  }
+
+
 
   public ResponseEntity<?> addEducation(Education educationRequest) {
 

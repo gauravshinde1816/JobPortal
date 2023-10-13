@@ -24,7 +24,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         try {
             String authHeader = request.getHeader("Authorization");
-            System.out.println("authHeader" + authHeader);
+            System.out.println("authHeader + " + authHeader);
             if(authHeader != null){
                 String username =  Jwts.parserBuilder().setSigningKey("======================Secret=Spring===========================").build().parseClaimsJws(authHeader).getBody().getSubject();
                 UserDetails userDetails = userService.loadUserByUsername(username);

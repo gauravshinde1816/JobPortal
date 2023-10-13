@@ -1,0 +1,19 @@
+
+.container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 10px; /* Adjust the gap as needed */
+    margin-top: 5rem;
+  }
+
+
+  .job_list_container{
+    margin: 5rem;
+  }
+  
+  .column1 {  
+  }
+  
+  .column2 {
+  }
+  

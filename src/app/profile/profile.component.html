@@ -1,0 +1,25 @@
+<div class="profile-container">
+    <div class="profile-photo">
+      <img src="https://ui-avatars.com/api/?name={{userName + 'Shinde'}}" alt="User Photo">
+    </div>
+    <div class="profile-details">
+      <h2>{{userName}}</h2>
+      <h2>{{this.userDetails.user.current_company}}</h2>
+      <p>{{this.userDetails.user.bio}}</p>
+      <!-- Add other user details here -->
+      <div *ngIf="role === 'HM'">
+        <mat-chip>No of Jobs Posted : {{jobListCountForHiringManager}}</mat-chip>
+      </div>
+    </div>
+    <div class="exp_edu_list">
+        <app-education-list></app-education-list>
+        <app-experience-list></app-experience-list>
+    </div>
+    <!-- applied jobs for Job seeker -->
+    <div *ngIf="this.userDetails.user.role === 'JS'" class="applied_jobs">
+      <div *ngFor="let jobApplication of jobApplicationList">
+        <app-job-item [job]="jobApplication.job" [jobDetails]="true" [role]="this.userDetails.user.role" [jobStatus]="jobApplication.status"></app-job-item>
+    </div>
+    </div>
+  </div>
+  

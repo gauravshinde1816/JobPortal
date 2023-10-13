@@ -1,0 +1,7 @@
+.exp_header{
+    display: flex;
+    justify-content: space-between;
+}
+.text_color{
+    color: black;
+}
