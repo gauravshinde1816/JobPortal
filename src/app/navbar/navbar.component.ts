@@ -24,6 +24,8 @@ export class NavbarComponent {
       this.role = role
     })
 
+    console.log(this.isLoggedIn ,  " "  , this.role)
+
   }
 
 

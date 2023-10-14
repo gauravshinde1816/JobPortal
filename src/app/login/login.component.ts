@@ -17,6 +17,16 @@ export class LoginComponent {
 
   constructor(private loginService : LoginService ,  private router : Router , private centralDataService : CentralDataServiceService ){}
 
+
+
+  ngOnInit(){
+    const token = localStorage.getItem("authToken")
+
+    if(token){
+      this.router.navigate(['dashboard'])
+    }
+  }
+
   onSubmit() {
     this.loginService.postData({username : this.username , password : this.password }).subscribe(
       (data : UserDetails )=> {

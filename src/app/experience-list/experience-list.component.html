@@ -5,7 +5,8 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           Experience
-          <button *ngIf="this.userDetails.user.username === experienceList[0].user.username" routerLink="/add-experience" class="add_exp" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+          <!-- experienceList.length !== 0 && userDetails && this.userDetails.user.username === experienceList[0].user.username -->
+          <button *ngIf="this.userDetails?.user?.username === experienceList[0]?.user?.username" routerLink="/add-experience" class="add_exp" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
             <mat-icon>add</mat-icon>
           </button>
         </mat-panel-title>

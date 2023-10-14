@@ -25,6 +25,12 @@ export class SignupComponent {
     this.route.queryParams.subscribe(params => {
         this.role  = params['role']
     })
+
+    const token = localStorage.getItem("authToken")
+
+    if(token){
+      this.router.navigate(['dashboard'])
+    }
   }
 
   onSubmit() {
